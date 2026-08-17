@@ -7,9 +7,9 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
-    "seed": "knex --knexfile knexfile.ts seed:run",
+    "migrate": "node --import tsx ./node_modules/knex/bin/cli.js --knexfile src/config/knexfile.ts migrate:latest",
+    "migrate:rollback": "node --import tsx ./node_modules/knex/bin/cli.js --knexfile src/config/knexfile.ts migrate:rollback",
+    "seed": "node --import tsx ./node_modules/knex/bin/cli.js --knexfile src/config/knexfile.ts seed:run",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -30,11 +30,15 @@
     "pg": "^8.23.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.2.0",
     "@types/node": "^26.2.0",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }

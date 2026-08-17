@@ -4,9 +4,9 @@ import { envVars } from "./config/env.js";
 
 async function startServer() {
   try {
-    await db.raw("SELECT 1");
+    // await db.raw("SELECT 1");
 
-    console.log("✅ Database connected successfully");
+    // console.log("✅ Database connected successfully");
 
     app.listen(envVars.PORT, () => {
       console.log(`🚀 Server running on port ${envVars.PORT}`);

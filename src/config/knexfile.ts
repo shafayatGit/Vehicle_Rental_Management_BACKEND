@@ -1,7 +1,8 @@
 import type { Knex } from "knex";
 import "dotenv/config";
+import path from "path";
 
-const config: Record<string, Knex.Config> = {
+const config: { development: Knex.Config } = {
   development: {
     client: "pg",
 
@@ -13,11 +14,11 @@ const config: Record<string, Knex.Config> = {
     },
 
     migrations: {
-      directory: "./src/database/migrations",
+      directory: path.resolve(__dirname, "../database/migrations"),
     },
 
     seeds: {
-      directory: "./src/database/seeds",
+      directory: path.resolve(__dirname, "../database/seeds"),
     },
 
     pool: {

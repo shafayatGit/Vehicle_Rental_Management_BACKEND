@@ -1,5 +1,7 @@
 node_modules/
 dist/
+AGENTS.md
+doc.pdf
 
 .env
 
