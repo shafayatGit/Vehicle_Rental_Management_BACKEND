@@ -1,6 +1,6 @@
 import type { Knex } from "knex";
-import "dotenv/config";
 import path from "path";
+import { envVars } from "./env";
 
 const config: { development: Knex.Config } = {
   development: {
@@ -22,8 +22,8 @@ const config: { development: Knex.Config } = {
     },
 
     pool: {
-      min: 2,
-      max: 10,
+      min: parseInt(envVars.DB_POOL_MIN),
+      max: parseInt(envVars.DB_POOL_MAX),
     },
   },
 };

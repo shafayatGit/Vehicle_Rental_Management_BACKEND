@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
 import status from "http-status";
+import path from "path";
 import AppError from "../errors/AppError";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 interface EnvConfig {
   NODE_ENV: string;
@@ -12,6 +13,8 @@ interface EnvConfig {
   REFRESH_TOKEN_SECRET: string;
   ACCESS_TOKEN_EXPIRES_IN: string;
   REFRESH_TOKEN_EXPIRES_IN: string;
+  DB_POOL_MIN: string;
+  DB_POOL_MAX: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -23,6 +26,8 @@ const loadEnvVariables = (): EnvConfig => {
     "REFRESH_TOKEN_SECRET",
     "ACCESS_TOKEN_EXPIRES_IN",
     "REFRESH_TOKEN_EXPIRES_IN",
+    "DB_POOL_MIN",
+    "DB_POOL_MAX",
   ];
 
   requiredEnvVariables.forEach((variable) => {
@@ -42,6 +47,8 @@ const loadEnvVariables = (): EnvConfig => {
     REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET as string,
     ACCESS_TOKEN_EXPIRES_IN: process.env.ACCESS_TOKEN_EXPIRES_IN as string,
     REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN as string,
+    DB_POOL_MIN: process.env.DB_POOL_MIN as string,
+    DB_POOL_MAX: process.env.DB_POOL_MAX as string,
   };
 };
 

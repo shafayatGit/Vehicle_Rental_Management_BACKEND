@@ -25,7 +25,7 @@ npm scripts exist (see `package.json`): `dev` (tsx watch), `build` (`tsc`), `sta
 - `src/config/knexfile.ts` — single knex config (pg + `DATABASE_URL`), typed as `{ development: Knex.Config }`. Note: **the knex CLI runs with cwd = the knexfile's folder**, so migration/seed directories use `path.resolve(__dirname, ...)` — keep that pattern if you add paths here.
 - `src/config/database.ts` exports a shared knex instance.
 - `src/errors/AppError.ts` — error class taking `(statusCode, message)`.
-- Migration and seed directories are configured as `./src/database/migrations` and `./src/database/seeds` — these do **not exist yet**; create them before adding migrations/seeds.
+- Migration and seed directories are `src/database/migrations` and `src/database/seeds`. Migrations: `20260817000001_create_staff`, `...02_create_vehicles`, `...03_create_rentals` (rentals uses a native `rental_status` enum; its `down` drops the type). Seeds: `01_rentals` (clears rentals), `02_staff`, `03_vehicles`, `04_rentals` — order matters (rentals reference vehicles; vehicles are reseeded between them). `04_rentals` fetches vehicles by `id` (ordered, destructured as `swift`/`corolla`/...) and computes `total_amount` from each vehicle's `daily_rate` — never hardcode vehicle ids. Seed logins: `staff@example.com` / `password123`.
 - `.env` is gitignored; `.env.example` is committed — mirror any new vars into it.
 
 ## Structure
