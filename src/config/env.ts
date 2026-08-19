@@ -15,6 +15,9 @@ interface EnvConfig {
   REFRESH_TOKEN_EXPIRES_IN: string;
   DB_POOL_MIN: string;
   DB_POOL_MAX: string;
+  CLOUDINARY_CLOUD_NAME: string;
+  CLOUDINARY_API_KEY: string;
+  CLOUDINARY_API_SECRET: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -28,6 +31,9 @@ const loadEnvVariables = (): EnvConfig => {
     "REFRESH_TOKEN_EXPIRES_IN",
     "DB_POOL_MIN",
     "DB_POOL_MAX",
+    "CLOUDINARY_CLOUD_NAME",
+    "CLOUDINARY_API_KEY",
+    "CLOUDINARY_API_SECRET",
   ];
 
   requiredEnvVariables.forEach((variable) => {
@@ -49,6 +55,9 @@ const loadEnvVariables = (): EnvConfig => {
     REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN as string,
     DB_POOL_MIN: process.env.DB_POOL_MIN as string,
     DB_POOL_MAX: process.env.DB_POOL_MAX as string,
+    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME as string,
+    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY as string,
+    CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET as string,
   };
 };
 
