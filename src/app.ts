@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import notFound from "./middleware/notFound";
 import authRouter from "./modules/auth/auth.route";
+import rentalsRouter from "./modules/rentals/rentals.route";
 import vehiclesRouter from "./modules/vehicles/vehicles.route";
 
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/auth", authRouter);
 app.use("/vehicles", vehiclesRouter);
+app.use("/rentals", rentalsRouter);
 
 //middleware
 app.use(globalErrorHandler);
