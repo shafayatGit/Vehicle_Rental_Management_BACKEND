@@ -3,6 +3,7 @@ import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import notFound from "./middleware/notFound";
 import authRouter from "./modules/auth/auth.route";
 import rentalsRouter from "./modules/rentals/rentals.route";
+import reportsRouter from "./modules/reports/reports.route";
 import vehiclesRouter from "./modules/vehicles/vehicles.route";
 
 const app = express();
@@ -20,6 +21,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/auth", authRouter);
 app.use("/vehicles", vehiclesRouter);
 app.use("/rentals", rentalsRouter);
+app.use("/reports", reportsRouter);
 
 //middleware
 app.use(globalErrorHandler);
